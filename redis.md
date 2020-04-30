@@ -3,8 +3,6 @@
     -list quicklist->(ziplist,linkedList)
     -hash 渐进式rehash
     -zset 跳跃链表
-
-
 #MODULE
     ##Bloomfilter
 
