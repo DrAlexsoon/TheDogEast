@@ -40,6 +40,7 @@
     <inspection_tool class="JdAvoidCallStaticSimpleDateFormat" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdAvoidComplexCondition" enabled="false" level="MAJOR " enabled_by_default="false" />
     <inspection_tool class="JdAvoidConcurrentCompetitionRandom" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidDoubleOrFloatEqualCompare" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdAvoidManuallyCreateThread" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdAvoidMissUseOfMathRandom" enabled="false" level="MAJOR " enabled_by_default="false" />
     <inspection_tool class="JdAvoidNegationOperator" enabled="false" level="MAJOR " enabled_by_default="false" />
@@ -48,6 +49,7 @@
     <inspection_tool class="JdAvoidReturnInFinally" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdAvoidStartWithDollarAndUnderLineNaming" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdAvoidUseTimer" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdBigDecimalAvoidDoubleConstructor" enabled="false" level="MAJOR " enabled_by_default="false" />
     <inspection_tool class="JdBooleanPropertyShouldNotStartWithIs" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdClassCastExceptionWithSubListToArrayList" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdClassCastExceptionWithToArray" enabled="false" level="CRITICAL " enabled_by_default="false" />
@@ -100,6 +102,7 @@
     <inspection_tool class="JdJDSystemOutPrint" enabled="false" level="WARNING " enabled_by_default="false" />
     <inspection_tool class="JdJDXXE" enabled="false" level="中危风险" enabled_by_default="false" />
     <inspection_tool class="JdJdMethodAndFieldMastHaveComment" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdLockShouldWithTryFinally" enabled="false" level="BLOCKER " enabled_by_default="false" />
     <inspection_tool class="JdLowerCamelCaseVariableNaming" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdMapOrSetKeyShouldOverrideHashCodeEquals" enabled="false" level="CRITICAL " enabled_by_default="false" />
     <inspection_tool class="JdMethodReturnWrapperType" enabled="false" level="MAJOR " enabled_by_default="false" />

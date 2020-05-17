@@ -15,10 +15,13 @@
 >> - noeviction default
 >> - volatile-lru
 >> - volatile-ttl
+>> - **volatile-lfu**
 >> - volatile-random
 >> - allkeys-lru
 >> - allkeys-random
+>> - **allkeys-lfu**
 >>近似LRU算法（LRU算法需要消耗大量内存），随机采样，3.0中增加了淘汰池？每次随机出来的key会和淘汰池中的key做比对，淘汰最老
+>> 4.0 新增**LFU**
 >#惰性删除（lazyfree）
 >>redis中删除大key耗时 4.0中引入了 *unlink* *flushdb async* *flushall async*
 

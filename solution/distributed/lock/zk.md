@@ -19,7 +19,7 @@
 
 
 #缺点
-- 通过心跳保活机制解决死锁会造成锁的不安全性
+- 通过心跳保活机制解决死锁会造成锁的不安全性?
 
 [1]: https://github.com/sfines/menagerie
 [2]: http://curator.apache.org/
