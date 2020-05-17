@@ -5,7 +5,8 @@
 >> 2.通过RS(Remembered Set)找出被region引用的对象
 >> 3.*复制算法*：拷贝存活对象到Survivor/Old Region，清理Eden Region空间
 - mixedGC
-> 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region
+> 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。
+在用户指定的开销目标范围内尽可能选择收益高的老年代Region
 ##RS
 - Collection Set（CSet）
 > 记录了GC要收集的Region集合信息，Region可以是任意年代的（Young Gen Region总是在CSet内）
@@ -23,4 +24,13 @@
 - 最终标记（Remark，STW）。标记那些在并发标记阶段发生变化的对象，将被回收（ SATB ）。
 - 清除（Cleanup，STW）。清除空Region（没有存活对象的），加入到free list。
 - 复制（Copying,STW)。复制存活对象
-
+##SATB(Snapshot-At-The-Beginning)
+GC开始时活着的对象的一个快照。它是通过Root Tracing得到的，作用是维持并发GC的正确性。 
+三色标记算法，我们知道对象存在三种状态： 
+* 白：对象没有被标记到，标记阶段结束后，会被当做垃圾回收掉。 
+* 灰：对象被标记了，但是它的field还没有被标记或标记完。 
+* 黑：对象被标记了，且它的所有field也被标记完了。
+CMS: 只要在写屏障（write barrier）里发现要有一个白对象的引用被赋值到一个黑对象的字段里，那就把这个白对象变成灰色的。即插入的时候记录下来
+G1: 在write barrier里把所有旧的引用所指向的对象都变成非白的.
+#Pause Prediction Model
+根据这个模型统计计算出来的历史数据来预测本次收集需要选择的Region数量，从而尽量满足用户设定的目标停顿时间
