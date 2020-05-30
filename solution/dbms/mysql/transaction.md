@@ -1,6 +1,6 @@
 
 #ACID实现
-- 通过redo log实现事务的AD
+- 通过redo log~~~~实现事务的AD
 > redo log buffer ,redo log file
 > 通过write redo log before commit 
 > **顺序读写**

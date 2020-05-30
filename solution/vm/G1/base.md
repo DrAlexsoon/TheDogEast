@@ -1,5 +1,5 @@
 #GC模式
-- yangGC 
+- yongGC 
 > 选定所有年轻代里的Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销
 >> 1.scan root
 >> 2.通过RS(Remembered Set)找出被region引用的对象
