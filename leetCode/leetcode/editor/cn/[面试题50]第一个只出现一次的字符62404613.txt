@@ -1,0 +1,21 @@
+class Solution {
+    public char firstUniqChar(String s) {
+        Map<Character,Integer> map = new LinkedHashMap<>();
+        char[] array = s.toCharArray();
+        for(int i = 0; i< array.length;i++){
+            if(map.containsKey(array[i])){
+                map.put(array[i],map.get(array[i])+1);
+            }else{
+                map.put(array[i],1);
+            }
+        }
+        for(Map.Entry<Character,Integer> entry :map.entrySet()){
+            if(entry.getValue() ==1){
+                return entry.getKey();
+            }
+        }
+        return ' ';
+    }
+}
+//runtime:39 ms
+//memory:40.4 MB

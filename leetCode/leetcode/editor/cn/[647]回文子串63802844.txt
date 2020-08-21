@@ -1,0 +1,17 @@
+class Solution {
+    public int countSubstrings(String s) {
+        boolean[][] result = new boolean [s.length()][s.length()];
+        int count = 0;
+        for(int i = 0; i< s.length() ;i++){
+            for(int j = i ;j >= 0 ;j--){
+                if(s.charAt(i) == s.charAt(j) && ((i -j )< 2 || result[j+1][i-1]) ){
+                    result[j][i] = true;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+//runtime:13 ms
+//memory:40.1 MB

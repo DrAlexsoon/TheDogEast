@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new LinkedList();
+        Arrays.sort(nums);
+        int i = 0;
+        int index = 1;
+        while(i < nums.length){
+            if(nums[i] == index){
+                i++;index++;
+                continue;
+            }else if(index< nums[i]){
+                result.add(index);
+                index++;
+                continue;
+            }else if(index > nums[i]){
+                i++;
+                continue;
+            }
+        }
+        while(index < nums.length +1){
+                result.add(index);
+                index++;
+        }
+        return result;
+    }
+}
+//runtime:58 ms
+//memory:N/A

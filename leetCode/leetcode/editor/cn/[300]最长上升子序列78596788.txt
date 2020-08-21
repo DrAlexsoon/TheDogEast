@@ -1,0 +1,30 @@
+class Solution {
+
+    public int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int[] grade = new int[nums.length];
+        int index = 0;
+        grade[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > grade[index]) {
+                grade[++index] = nums[i];
+            } else {
+                int left = 0;
+                int right = index;
+                while (left < right) {
+                    int mid = (left + right) / 2;
+                    if (nums[i] > grade[mid]) {
+                        left = mid + 1;
+                    } else {
+                        right = mid;
+                    }
+                }
+                grade[left] = nums[i];
+            }
+        }
+        return ++index;
+    }
+}
+
+//runtime:0 ms
+//memory:37.5 MB

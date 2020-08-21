@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+
+/**
+ * 前序遍历 preorder = [3,9,20,15,7]
+ * 中序遍历 inorder = [9,3,15,20,7]
+ */
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return buildTree(preorder, inorder, 0, preorder.length, 0, preorder.length);
+    }
+
+    TreeNode buildTree(int[] preorder, int[] inorder, int p_start, int p_end, int i_start, int i_end) {
+        if (p_start == p_end) {
+            return null;
+        }
+        TreeNode treeNode = new TreeNode(preorder[p_start]);
+        int pos = findPos(inorder, preorder[p_start]);
+        int left_size = pos - i_start;
+
+        treeNode.left = buildTree(preorder, inorder, p_start + 1, p_start + left_size + 1, i_start, pos);
+        treeNode.right = buildTree(preorder, inorder, p_start + left_size + 1, p_end, pos + 1, i_end);
+        return treeNode;
+    }
+
+    int findPos(int[] preorder, int target) {
+        for (int i = 0; i < preorder.length; i++) {
+            if (preorder[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+//runtime:4 ms
+//memory:40 MB

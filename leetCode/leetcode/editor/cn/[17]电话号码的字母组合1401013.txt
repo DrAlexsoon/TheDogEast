@@ -1,0 +1,29 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> result = new LinkedList();
+        if(digits.contains("1") || digits.contains("0")) return result;
+        String [] map= {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+        return getResultList(result,map,digits,0);
+    }
+    public List getResultList(LinkedList<String> list,String[] map,String digits,int i){
+        if(i == digits.length()) return list;
+        Iterator<String> t = list.iterator();
+        LinkedList<String> result = new LinkedList();
+        while(t.hasNext()){
+            String str =  t.next();
+            for(char c:map[Integer.parseInt(String.valueOf(digits.charAt(i)))].toCharArray()){
+                result.add(str+c);
+            }
+        }
+        if(i == 0){
+
+            for(char c:map[Integer.parseInt(String.valueOf(digits.charAt(i)))].toCharArray()){
+                result.add(String.valueOf(c));
+            }
+        }
+        return getResultList(result,map,digits,++i);
+    }
+}
+//runtime:5 ms
+//memory:N/A

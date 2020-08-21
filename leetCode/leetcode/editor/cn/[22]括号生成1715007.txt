@@ -1,0 +1,26 @@
+class Solution {
+    StringBuffer sb = new StringBuffer();
+    List<String> result = new LinkedList<String>();
+    public List<String> generateParenthesis(int n) {
+        get(n,0,0);
+        return result;
+    }
+    public void get(int n ,int left,int right){
+        if(n == left && n == right){
+            result.add(sb.toString());
+            return;
+        }
+        if(left < n){
+            sb.append("(");
+            get(n,left+1,right);
+            sb.setLength(sb.length() - 1);
+        }
+        if(right < left){
+            sb.append(")");
+            get(n,left,right+1);
+            sb.setLength(sb.length() - 1);
+        }
+    }
+}
+//runtime:3 ms
+//memory:N/A

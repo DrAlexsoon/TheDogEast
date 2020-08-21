@@ -1,0 +1,16 @@
+class Solution {
+    public int numTrees(int n) {
+        //F(i,n)=G(i−1)⋅G(n−i)
+        int [] tmp = new int [n +1];
+        tmp[0] = 1;
+        tmp[1] = 1;
+        for(int i = 2; i<= n ;i++){
+           for(int j = 1 ; j<= i; j++){
+               tmp[i] += tmp[j -1] * tmp[i -j];
+           }
+        }
+        return tmp[n];
+    }
+}
+//runtime:0 ms
+//memory:36.3 MB

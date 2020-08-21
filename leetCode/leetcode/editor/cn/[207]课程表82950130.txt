@@ -1,0 +1,34 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[] ingreed = new int[numCourses];
+        ArrayList<LinkedList<Integer>> list = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) {
+            list.add(new LinkedList<>());
+        }
+        for (int[] prerequisite : prerequisites) {
+            ingreed[prerequisite[0]]++;
+            list.get(prerequisite[1]).add(prerequisite[0]);
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (ingreed[i] == 0) {
+                queue.add(i);
+            }
+        }
+        while (!queue.isEmpty()) {
+            Integer poll = queue.poll();
+            numCourses--;
+            for (Integer item :
+                    list.get(poll)) {
+                if (--ingreed[item] == 0) {
+                    queue.add(item);
+                }
+            }
+
+        }
+        return numCourses == 0;
+    }
+}
+
+//runtime:6 ms
+//memory:39.8 MB

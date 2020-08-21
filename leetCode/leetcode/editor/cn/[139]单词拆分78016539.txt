@@ -1,0 +1,28 @@
+// f(n) =
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s.length() == 0){
+            return true;
+        }
+        HashSet<String> words = new HashSet<>(wordDict);
+        for (int i = 0; i < wordDict.size(); i++) {
+            String pre = wordDict.get(i);
+            if (s.startsWith(pre)) {
+                if (wordBreak(s.substring(pre.length()), wordDict)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+//runtime:N/A
+//memory:N/A
+//total_testcases:36
+//total_correct:29
+//input_formatted:
+//expected_output:
+//code_output:null
+//runtime_error:null
+//last_testcase:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab" ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]

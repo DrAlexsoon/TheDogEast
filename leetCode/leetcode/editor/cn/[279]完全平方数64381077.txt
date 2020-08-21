@@ -1,0 +1,25 @@
+class Solution {
+    public int numSquares(int n) {
+        //f(n) = min(f(n-k) +1 );
+        int [] result = new int[n+1];
+        Arrays.fill(result, Integer.MAX_VALUE);
+        result[0] = 0;
+        int length = (int)Math.sqrt(n)+1;
+        int [] helper = new int[length];
+        for(int i = 1;i< length ;i++){
+            helper[i] = (int)Math.pow(i,2);
+        }
+        for(int i = 1 ;i <= n ;i++){
+            
+            for(int s =1 ;s<helper.length;s++){
+                if(helper[s] > i){
+                    break;
+                }
+                result[i] = Math.min(result[i],result[i-helper[s]] +1);
+            }
+        }
+        return result[n];
+    }
+}
+//runtime:44 ms
+//memory:38.6 MB

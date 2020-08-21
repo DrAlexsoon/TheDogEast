@@ -1,0 +1,35 @@
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //f(n,0) = max(f(n.left,0),f(n.left,1)) + max(f(n.right,0),f(n.right,1))
+    //f(n,1) = f(n.left,0) + f(n.rigt,0) + k(n);
+    public int rob(TreeNode root) {
+        int[] dfs = dfs(root);
+        return Math.max(dfs[0], dfs[1]);
+    }
+
+    int[] dfs(TreeNode root) {
+        if (root == null) {
+            return new int[]{0, 0};
+        }
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        int[] current = new int[2];
+        current[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+        current[1] = root.val + left[0] + right[0];
+        return current;
+    }
+
+}
+
+//runtime:0 ms
+//memory:39.2 MB

@@ -1,0 +1,23 @@
+class Solution {
+    public double myPow(double x, int n) {
+         
+        boolean pre = false;
+        double result = 1.0d;
+        if(n < 0){
+            pre = true;
+            n = Math.abs(n);
+        }
+        while( n != 0){
+            if(n %2 == 1){
+                result = result * x;
+            }
+
+            x = x*x;
+            n = n >>>1;
+        }
+        return pre ?1/result:result;
+    }
+
+}
+//runtime:1 ms
+//memory:37.5 MB

@@ -1,0 +1,54 @@
+class MinStack {
+    Stack<Integer> stack;
+    LinkedList<Integer> helper;
+
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack() {
+        stack = new Stack<>();
+        helper = new LinkedList<>();
+    }
+
+    public void push(int x) {
+        Integer min;
+        if (stack.isEmpty()) {
+            min = x;
+        } else {
+            min = Math.min(helper.peek(), x);
+        }
+
+        stack.push(x);
+        helper.add(min);
+    }
+
+    public void pop() {
+        if (!stack.isEmpty()) {
+            stack.pop();
+            helper.pollLast();
+        }
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return helper.peekLast();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+//total_testcases:18
+//total_correct:12
+//input_formatted:["MinStack","push","push","push","push","getMin","pop","getMin","pop","getMin","pop","getMin"], [[],[2],[0],[3],[0],[],[],[],[],[],[],[]]
+//expected_output:[null,null,null,null,null,0,null,0,null,0,null,2]
+//code_output:[null,null,null,null,null,0,null,2,null,0,null,2]

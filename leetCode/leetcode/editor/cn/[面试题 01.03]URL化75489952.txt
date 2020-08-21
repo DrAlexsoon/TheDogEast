@@ -1,0 +1,23 @@
+class Solution {
+    public String replaceSpaces(String S, int length) {
+
+        char[] chars = S.toCharArray();
+
+        char[] result = new char[length * 3];
+
+        int index = 0;
+        for (int i = 0; i < length; i++) {
+            if (chars[i] == ' ') {
+                result[index++] = '%';
+                result[index++] = '2';
+                result[index++] = '0';
+            }else {
+                result[index++] = chars[i];
+            }
+        }
+        return new String(result).trim();
+    }
+}
+
+//runtime:14 ms
+//memory:48.5 MB

@@ -1,0 +1,32 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> result = new LinkedList();
+        String[] map = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+        return getResultList(map, digits, 0, result);
+    }
+
+    List<String> getResultList(String[] map, String digits, int i, LinkedList<String> list) {
+        if (digits.length() == i) {
+            return list;
+        }
+        LinkedList<String> result = new LinkedList<>();
+
+        String s = map[Integer.valueOf(String.valueOf(digits.charAt(i)))];
+        char[] chars = s.toCharArray();
+        for (int j = 0; j < chars.length; j++) {
+            if (i != 0) {
+                for (String str : list) {
+                    result.add(str + chars[j]);
+                }
+            }else{
+                result.add(String.valueOf(chars[j]));
+            }
+
+        }
+        return getResultList(map, digits, ++i, result);
+    }
+}
+
+//runtime:7 ms
+//memory:40.2 MB

@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        LinkedList<Integer> result = new LinkedList<Integer>();
+        int[] need = new int[26];
+        for (char c : p.toCharArray()) {
+            need[c - 'a']++;
+        }
+        int left = 0;
+        int right = 0;
+        int[] window = new int[26];
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            window[c - 'a']++;
+            right++;
+            while (window[c - 'a'] > need[c - 'a']) {
+                window[s.charAt(left) - 'a'] -= 1;
+                left++;
+            }
+            if (right - left == p.length()) {
+                result.add(left);
+            }
+        }
+        return result;
+    }
+}
+
+//runtime:6 ms
+//memory:41.1 MB
