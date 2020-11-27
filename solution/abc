@@ -1,0 +1,20 @@
+#python3 PATH
+add path in ~/.bash_profile
+- alias python="/usr/local/opt/python@3.8/libexec/bin/python"
+
+
+selenium install
+https://www.cnblogs.com/lfri/p/10542797.html
+https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+# proxy pool
+https://github.com/jhao104/proxy_pool
+-- docker run --env DB_CONN=redis://:test123@127.0.0.1:6379/0 -p 5010:5010 jhao104/proxy_pool:latest
+
+#BiliBILI simple
+https://zhuanlan.zhihu.com/p/104769022
+
+#aira 下载
+https://github.com/aria2/aria2
+
+629+
